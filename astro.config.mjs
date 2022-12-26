@@ -14,6 +14,5 @@ export default defineConfig({
     plugins: [yaml()]
   },
   integrations: [sitemap()],
-  output: "server",
-  adapter: vercel()
+
 });
