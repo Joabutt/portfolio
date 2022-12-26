@@ -1,0 +1,33 @@
+---
+import AspectRatioContentBlock from "../project_detail/AspectRatioContentBlock.astro";
+
+const { project, contentBlock } = Astro.props;
+
+const width = 'width' in contentBlock.properties ? contentBlock.properties.width : '16';
+const height = 'height' in contentBlock.properties ? contentBlock.properties.height : '9';
+---
+
+<AspectRatioContentBlock
+	project={project}
+	contentBlock={contentBlock}
+	width={width}
+	height={height}
+>
+	<iframe
+		frameborder="0"
+		src={`https://www.youtube-nocookie.com/embed/${contentBlock.properties.data}?rel=0`}
+		allowfullscreen
+		onload="fadeIn(this);"
+	/>
+</AspectRatioContentBlock>
+
+<style>
+	iframe {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>

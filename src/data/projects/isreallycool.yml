@@ -1,0 +1,21 @@
+title: Is really cool
+description: A place for software devs to host their really cool projects and personal websites for Free
+tags: 
+  - 2022
+  - Free domains
+  - Community project
+links: 
+  - title: Github 
+    link: https://github.com/is-really-cool/register
+  - title: Website
+    link: https://is-really.cool
+page: 
+  - type: image
+    data: isreallycool_1.png
+    desc: Is-really.cool is a free domain sharing service for people to share their works and portfolios to the world, on a really cool domain!
+  - type: image
+    data: isreallycool_2.png
+    desc: This domain sharing service's registration is on github, where users will create a new file with their desired domain name, their site url they want the domain to point to, and their email for contact purposes. 
+  - type: image
+    data: isreallycool_3.png
+    desc: Once the pull request for the domain is merged, a github action that will use curl to call a self-written api will take place, then the api will then proceed to get the information from the merged pull requests's new data, and use the Cloudflare api to add the new subdomain to the site.

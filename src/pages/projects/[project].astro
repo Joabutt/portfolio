@@ -1,0 +1,267 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import BigButton from '../../components/core/BigButton.astro';
+import CBImage from '../../components/content_blocks/CB_Image.astro';
+import CBText from '../../components/content_blocks/CB_Text.astro';
+import CBVideo from '../../components/content_blocks/CB_Video.astro';
+import CBSketchfab from '../../components/content_blocks/CB_Sketchfab.astro';
+import CBYoutube from '../../components/content_blocks/CB_YouTube.astro';
+import * as Utilities from '../../scripts/utilities';
+
+// Dynamic routing
+export async function getStaticPaths()
+{
+	let paths = [];
+	await Utilities.forEachProject((projectName, projectData) => {
+		paths.push({
+			params: { project: projectName },
+			props: { projectData: projectData }
+		});
+	});
+
+	return paths;
+}
+
+// Content block pre-processing
+const { project } = Astro.params;
+const { projectData } = Astro.props;
+
+const componentLibrary = {
+	'image': CBImage,
+	'text': CBText,
+	'video': CBVideo,
+	'sketchfab': CBSketchfab,
+	'youtube': CBYoutube
+}
+
+let contentBlocks = [];
+for (let i = 0; i < projectData.page.length; i++)
+{
+	const CBProperties = projectData.page[i];
+	
+	if (!(CBProperties.type in componentLibrary)) {
+		Utilities.logError('Unknown content block type: "' + CBProperties.type + '".');
+		continue;
+	}
+
+	const CBData = {};
+	CBData['component'] = componentLibrary[CBProperties.type];
+	CBData['properties'] = CBProperties;
+
+	contentBlocks.push(CBData);
+}
+
+// Layout variables
+const pageInfo = {};
+pageInfo['titlePrepend'] = projectData.title;
+pageInfo['description'] = projectData.description;
+pageInfo['image'] = `assets/projects/${project}/thumb.jpg`;
+pageInfo['tab'] = 'projects';
+---
+
+<MainLayout pageInfo={pageInfo}>
+	<div class="project-detail-wrapper">
+		<div class="project-detail">
+
+			<!-- Title -->
+			<h1 class="project-title">{projectData.title}</h1>
+
+			<!-- Tags -->
+			<div class="tag-wrapper">
+				<div class="tag-row">
+				{projectData.tags.map((tag) => {
+					return <div class="tag">{tag}</div>
+				})}
+				</div>
+			</div>
+			
+			<!-- Links -->
+			{projectData.links && (
+				<div>
+					<div class="tag-wrapper">
+					{projectData.links.map((link) => (
+						<>
+							<a class="tile link" href={link.link} target="_blank">
+								<img class="link-tile-icon" src="/assets/svg/external-link-alt.svg" onload="fadeIn(this);"/>
+								<div class="link-tile-text">{link.title}</div>
+							</a>
+						</>
+					))}
+					</div>
+				</div>
+			)}
+
+			<!-- Content blocks -->
+			{contentBlocks.map((block, index) => {
+				let Component = block.component;
+
+				let ComponentContentBlockData = {};
+				ComponentContentBlockData['properties'] = block.properties;
+				ComponentContentBlockData['index'] = index;
+
+				let ComponentProjectData = {};
+				ComponentProjectData['name'] = project;
+				ComponentProjectData['hasLinks'] = 'links' in projectData;
+				
+				return <Component
+					project={ComponentProjectData}
+					contentBlock={ComponentContentBlockData}
+				/>
+			})}
+		</div>
+	</div>
+	<div class="back-to-projects-wrapper">
+		<BigButton
+			text="Back to projects"
+			link="/projects/"
+			icon="/assets/svg/folder-open.svg"
+		/>
+	</div>
+</MainLayout>
+
+<!-- Inline to instantly initialize all aspect containers -->
+<script is:inline src="/scripts/project-detail.js"/>
+
+<style>
+	.project-detail-wrapper {
+		max-width: 1000px;
+		margin: 30px auto;
+	}
+
+	.project-detail {
+		padding: 0 52px;
+		text-align: center;
+		min-height: calc(100vh - 366px);
+	}
+
+	h1 {
+		text-align: center;
+	}
+
+	.back-to-projects-wrapper {
+		text-align: center;
+		margin: 60px 0px 50px;
+	}
+
+	.project-title {
+		margin: 0.2em 0;
+		font-size: 45px;
+	}
+
+	.tag-wrapper {
+		margin-bottom: 20px;
+		display: flex;
+		justify-content: center;
+	}
+
+	.tag-row {
+		padding: 4px 8px;
+	}
+
+	.tag {
+		position: relative;
+		font-family: 'Catamaran', sans-serif;
+		font-weight: 600;
+		display: inline-block;
+		font-size: 18px;
+		padding: 4px 8px;
+		color: #333;
+		background: #f0f0f0;
+		border-radius: 4px;
+		margin: 0px 3px;
+	}
+
+	.link-tile-icon {
+		opacity: 0;
+	}
+
+	@media (max-width: 776px) {
+		.project-detail {
+			padding: 0;
+			min-height: calc(100vh - 324px);
+		}
+
+		.image-center, .project-detail-wrapper {
+			margin: 0;
+		}
+
+		.back-to-projects-wrapper {
+			margin-top: 60px;
+		}
+
+		.project-title {
+			font-size: 36px;
+		}
+
+		.tag {
+			margin-top: 3px;
+			margin-bottom: 3px;
+		}
+
+		.tag-wrapper {
+			flex-direction: column;
+		}
+	}
+
+	@media (min-width: 2101px) {
+		.project-detail-wrapper {
+			max-width: 1200px;
+		}
+	}
+</style>
+
+<style is:global>
+	p {
+		position: relative;
+		padding: 22px 30px;
+		text-align: left;
+	}
+
+	.textarea {
+		color: #222;
+		background: #fff;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		line-height: normal;
+	}
+
+	.border-radius-top,
+	.border-radius-top iframe,
+	.border-radius-top video {
+		border-radius: 5px 5px 0px 0px;
+	}
+
+	.border-radius-full,
+	.border-radius-full iframe,
+	.border-radius-full video {
+		border-radius: 5px;
+	}
+
+	@media (max-width: 776px) {
+		.textarea {
+			background: none;
+			border: none;
+			padding: 22px 22px;
+			padding-bottom: 0;
+			margin: 0;
+			margin-bottom: 20px;
+			width: calc(100% - 44px) !important;
+			text-align: left;
+		}
+
+		.border-radius-top,
+		.border-radius-top iframe,
+		.border-radius-top video,
+		.border-radius-full,
+		.border-radius-full iframe,
+		.border-radius-full video {
+			border-radius: 0px;
+		}
+	}
+
+	@media (min-width: 2101px) {
+		p {
+			font-size: 20px;
+		}
+	}
+</style>

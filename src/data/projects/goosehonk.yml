@@ -1,0 +1,18 @@
+title: Goosehonk
+Description: An Api built onto Desktop Goose for MacOS, made together with Alextheomfg.dev
+tags:
+  - 2022
+  - Collab
+  - Javascript
+links: 
+  - title: Showcase
+    link: https://goosehonkapi.netlify.app
+  - title: Alextheomfg
+    link: https://alextheomfg.dev
+page:
+  - type: image
+    data: goosehonk_1.png
+    desc: Goosehonk is an API for <a href="https://samperson.itch.io/desktop-goose">Desktop Goose for Mac</a>. It uses javascript to communicate with MacOs applescript to tell desktop goose to pull the memes and yo mamma jokes.
+  - type: image
+    data: goosehonk_2.png
+    desc: Goosehonk was written in javascript and used the applescript integration in Desktop Goose for Mac. The memes are taken from the <a href="https://reddit.com/r/memes">r/memes</a> subreddit, and the yo mamma jokes are taken from a public npm package called <a href="https://www.npmjs.com/package/yo-mamma">yo-mamma</a>.

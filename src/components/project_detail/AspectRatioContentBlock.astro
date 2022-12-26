@@ -1,0 +1,70 @@
+---
+import ContentBlock from './ContentBlock.astro';
+
+const { project, contentBlock, width, height } = Astro.props;
+
+const containerId = "aspect-ratio-content-block-" + contentBlock.index;
+const borderClass = 'desc' in contentBlock.properties ? ' border-radius-top' : ' border-radius-full';
+---
+
+<ContentBlock>
+	<div 
+		id={containerId}
+		class={"aspect-container" + borderClass}
+		data-width={width}
+		data-height={height}
+		data-first_padding={contentBlock.index == 0 ? 'true' : 'false'}
+		data-desc_padding={'desc' in contentBlock.properties ? 'true' : 'false'}
+		data-links_padding={project.hasLinks && contentBlock.index == 0 ? 'true' : 'false'}
+	>
+		<slot/>
+	</div>
+
+	{'desc' in contentBlock.properties && (
+		<p
+			class="content-description textarea"
+			data-target={containerId}
+			set:html={contentBlock.properties.desc}
+		/>
+	)}
+</ContentBlock>
+
+<style>
+	.aspect-container {
+		position: relative;
+		display: inline-block;
+		line-height: 0;
+		
+		background: #eee;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.aspect-container:hover :global(.media-controls)  {
+		opacity: 1;
+	}
+
+	.content-description {
+		margin-top: 0px;
+		margin-left: auto;
+		margin-right: auto;
+		line-height: initial;
+	}
+
+	p {
+		margin: 0px 0px -5px;
+		top: -5px;
+	}
+
+	@media (max-width: 776px) {
+		p {
+			top: 0px;
+		}
+	}
+
+	@media (max-width: 776px) {
+		.aspect-container {
+			background-size: 25%;
+		}
+	}
+</style>

@@ -1,0 +1,105 @@
+---
+import BigButton from '../components/core/BigButton.astro';
+import Analytics from '../components/core/Analytics.astro';
+
+import '@fontsource/catamaran/600.css';
+import '@fontsource/solway/400.css';
+
+import 'normalize.css';
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Page Not Found</title>
+		<meta name="robots" content="noindex">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<Analytics/>
+		<script is:inline src="/scripts/global.js" />
+	</head>
+	<body>
+		
+		<div class="text-container">
+			<div class="title">404</div>
+			<div class="text">Page not found.</div>
+			<BigButton
+				text="Return home"
+				link="/"
+				icon="/assets/svg/home.svg"
+			/>
+		</div>
+		<script type="module" src="/scripts/model-viewer.min.js" />
+	</body>
+</html>
+
+<style>
+	.text-container {
+		position: absolute;
+		width: 77vw;
+		height: 88vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		user-select: none;
+	}
+
+	.title {
+		font-family: 'Catamaran', sans-serif;
+		font-weight: 600;
+		font-size: 240px;
+		color: #333;
+		line-height: 210px;
+	}
+
+	.text {
+		font-family: 'Catamaran', sans-serif;
+		font-weight: 600;
+		font-size: 30px;
+		color: #333;
+		margin-top: 0px;
+		margin-bottom: 30px;
+	}
+
+	.content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+
+	model-viewer {
+		width: 100%;
+		height: 100%;
+	}
+
+	@media (max-width: 776px) {
+		.content {
+			display: none;
+		}
+
+		.title {
+			font-size: 150px;
+			line-height: 140px;
+		}
+
+		.text-container {
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	@media (min-width: 2101px) {
+		.title {
+			font-size: 320px;
+			line-height: 280px;
+		}
+
+		.text {
+			font-size: 40px;
+		}
+	}
+</style>

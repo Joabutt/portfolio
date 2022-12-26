@@ -1,0 +1,22 @@
+title: Doqs
+description: Doqs is a lightweight solution to Google Docs, originally made as a school project.
+tags: 
+  - 2022
+  - Beta
+  - Tiptap
+  - React
+links:
+  - title: Github page
+    link: https://github.com/joabutt/doqs
+  - title: Page demo
+    link: https://doqs.pages.dev
+page: 
+  - type: image
+    data: doqs_1.png
+    desc: Originally, doqs was created as a class project to help improve collaboration, seamlessly. I originally had a friend help in development, but it soon became a personal project that i took up.
+  - type: image
+    data: doqs_2.png
+    desc: The database for doqs is self hosted, and the websockets to connect the client to the database with rtc is offered by Yjs's <a href="https://github.com/yjs/y-websocket">y-websocket</a>. The database is currently self hosted on my raspberry pi 4b+ persisting to a folder with encrypition, and all traffic is proxied through <a href="https://localtunnel.me">localtunnel</a> servers. So far, all connections have passed benchmark tests and the server is located in Southeast Asia.
+  - type: image
+    data: doqs_3.png
+    desc: Doqs is mainly written in jsx, and it is bootstrapped with <a href="https://create-react-app.dev">create-react-app</a>. The project revolves around a room based system, where users will collaborate on a certain document tied to a room name. The room names are secure and will not be exposed to the public.

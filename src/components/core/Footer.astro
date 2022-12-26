@@ -1,0 +1,73 @@
+---
+import '../../styles/tiles.css';
+---
+
+<div class="footer">
+	<div class="link-row">
+		<div class="tile-wrapper">
+			<a href="mailto:me@joabutt.dev" target="_blank" title="Email">
+				<div class="tile"> 
+					<div class="tile-icon"><img src="/assets/svg/envelope.svg" onload="fadeIn(this);"></div>
+				</div>
+			</a>
+		</div>
+		<div class="tile-wrapper">
+			<a href="https://joabutt.itch.io" target="_blank" title="LinkedIn">
+				<div class="tile">
+					<div class="tile-icon"><img src="/assets/svg/itch.svg" onload="fadeIn(this);"></div>
+				</div>
+			</a>
+		</div>
+		<div class="tile-wrapper">
+			<a href="https://github.com/joabutt" target="_blank" title="GitHub">
+				<div class="tile">
+					<div class="tile-icon"><img src="/assets/svg/github.svg" onload="fadeIn(this);"></div>
+				</div>
+			</a>
+		</div>
+
+	</div>
+</div>
+
+<style>
+	.footer {
+		position: relative;
+		margin: 40px 0px;
+		pointer-events: none;
+	}
+
+	.footer .tile-wrapper {
+		pointer-events: all;
+	}
+
+	.footer .tile-icon {
+		height: 28px;
+	}
+
+	.footer .tile-icon img {
+		opacity: 0;
+		width: 28px;
+		height: 28px;
+	}
+
+	@media (max-width: 776px) {
+		.footer {
+			margin: 30px 0;
+		}
+	}
+
+	@media (min-width: 2101px) {
+		.footer {
+			margin: 50px 0;
+		}
+
+		.footer .tile-icon {
+			height: 31px;
+		}
+
+		.footer .tile-icon img {
+			width: 31px;
+			height: 31px;
+		}
+	}
+</style>
