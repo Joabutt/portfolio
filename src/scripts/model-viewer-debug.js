@@ -2,6 +2,8 @@ let level = 0;
 let debugEnabled = false;
 let memelevel = 0;
 let rickrolled = false;
+let alextlevel = 0
+let alexted = false;
 
 document.addEventListener('keypress', (event) => {
 
@@ -69,6 +71,23 @@ document.addEventListener('keypress', (event) => {
 		{
 			console.log("your mom gay")
             window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+		}
+	}
+
+	if (!alexted){
+		let code = event.code;
+
+		if (alextlevel == 0 && code == "KeyA") alextlevel++;
+		else if (alextlevel == 1 && code == "KeyL") alextlevel++;
+		else if (alextlevel == 2 && code == "KeyE") alextlevel++;
+		else if (alextlevel == 3 && code == "KeyX") alextlevel++;
+		else if (alextlevel == 4 && code == "KeyT") alextlevel++;
+		
+		else alextlevel = 0
+		if (alextlevel == 5)
+		{
+			console.log("amazig guy go check him out")
+			window.open("https://alextheomfg.dev")
 		}
 	}
 
