@@ -8,8 +8,6 @@ tags:
 links: 
   - title: Github
     link: https://github.com/joabutt/aideas-backend
-  - title: Website
-    link: https://aideas.dev
 page:
   - type: image
     data: aideas_1.png

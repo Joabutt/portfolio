@@ -8,8 +8,6 @@ tags:
 links:
   - title: Github page
     link: https://github.com/joabutt/doqs
-  - title: Page demo
-    link: https://doqs.pages.dev
 page: 
   - type: image
     data: doqs_1.png

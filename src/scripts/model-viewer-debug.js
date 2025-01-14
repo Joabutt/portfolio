@@ -50,45 +50,4 @@ document.addEventListener('keypress', (event) => {
 	}
 
 
-	if (!rickrolled)
-	{
-		let code = event.code;
-	
-		if (memelevel == 0 && code == 'KeyY') memelevel++;
-		else if (memelevel == 1 && code == 'KeyO') memelevel++;
-		else if (memelevel == 2 && code == 'KeyU') memelevel++;
-		else if (memelevel == 3 && code == 'KeyR') memelevel++;
-		else if (memelevel == 4 && code == 'KeyM') memelevel++;
-        else if (memelevel == 5 && code == 'KeyO') memelevel++;
-        else if (memelevel == 6 && code == 'KeyM') memelevel++;
-        else if (memelevel == 7 && code == 'KeyG') memelevel++;
-        else if (memelevel == 8 && code == 'KeyA') memelevel++;
-        else if (memelevel == 9 && code == 'KeyY') memelevel++;
-
-		else memelevel = 0;
-	
-		if (memelevel == 10)
-		{
-			console.log("your mom gay")
-            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
-		}
-	}
-
-	if (!alexted){
-		let code = event.code;
-
-		if (alextlevel == 0 && code == "KeyA") alextlevel++;
-		else if (alextlevel == 1 && code == "KeyL") alextlevel++;
-		else if (alextlevel == 2 && code == "KeyE") alextlevel++;
-		else if (alextlevel == 3 && code == "KeyX") alextlevel++;
-		else if (alextlevel == 4 && code == "KeyT") alextlevel++;
-		
-		else alextlevel = 0
-		if (alextlevel == 5)
-		{
-			console.log("amazig guy go check him out")
-			window.open("https://alextheomfg.dev")
-		}
-	}
-
 }, false);

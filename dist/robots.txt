@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jblaha.art/sitemap-index.xml
+Sitemap: https://joabl.ee/sitemap-index.xml

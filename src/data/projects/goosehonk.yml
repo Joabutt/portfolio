@@ -2,13 +2,8 @@ title: Goosehonk
 Description: An Api built onto Desktop Goose for MacOS, made together with Alextheomfg.dev
 tags:
   - 2022
-  - Collab
+  - Applescript
   - Javascript
-links: 
-  - title: Showcase
-    link: https://goosehonkapi.netlify.app
-  - title: Alextheomfg
-    link: https://alextheomfg.dev
 page:
   - type: image
     data: goosehonk_1.png

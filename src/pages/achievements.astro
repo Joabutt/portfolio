@@ -1,0 +1,122 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+// Layout variables
+const pageInfo = {};
+
+pageInfo['titlePrepend'] = 'Projects'
+pageInfo['description'] = 'Portfolio of my personal projects, works, and school life!'
+pageInfo['tab'] = 'achievements';
+---
+
+<MainLayout pageInfo={pageInfo}>
+	<div class="homepage">
+		<h1 class="homepage-title">Joab Lee</h1>
+	</div>
+</MainLayout>
+
+
+
+<style>
+	.homepage {
+		position: relative;
+		min-height: 420px;
+		margin: auto;
+		height: calc(100vh - 227px);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.homepage-title {
+		z-index: 10;
+		font-size: 60px;
+		text-align: center;
+		pointer-events: none;
+	}
+
+
+	.homepage-info-panel {
+		height: 100%;
+		margin-left: 52%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	
+
+	@media (max-width: 776px) {
+		.homepage {
+			display: block;
+			min-width: 0;
+			max-width: none;
+			min-height: 320px;
+			height: calc(100vh - 227px);
+		}
+
+		.homepage-title {
+			font-size: 56px;
+			margin-bottom: 0;
+		}
+
+		.model-viewer-container {
+			display: none;
+		}
+
+		.homepage-info-panel {
+			margin-left: 0px;
+			align-items: center;
+		}
+		
+		.typewriter-container {
+			width: 227px;
+		}
+	}
+	
+	@media (min-width: 2101px) {
+		.homepage-info-panel {
+			margin-left: 53%;
+		}
+
+		.model-viewer-container {
+			left: -300px;
+			width: calc(100% + 300px);
+		}
+	}
+</style>
+
+<style is:global>
+	#model-debug-wrapper {
+		position: absolute;
+		width: 100%;
+		top: -50px;
+		pointer-events: none;
+		display: flex;
+		justify-content: center;
+		opacity: 0;
+		transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.0);
+	}
+
+	#model-debug-list {
+		display: flex;
+		padding: 5px 8px;
+		border-radius: 3px;
+		background: #0002;
+		border-radius: 500px;
+	}
+
+	#model-debug-list div {
+		display: flex;
+		width: 28px;
+		height: 26px;
+		font-size: 17px;
+		border-radius: 500px;
+		justify-content: center;
+		align-items: center;
+		color: #333;
+		padding: 6px;
+		margin: 3px;
+		pointer-events: all;
+		cursor: pointer;
+	}
+</style>
