@@ -1,0 +1,35 @@
+---
+// src/components/achievements/AchievementCard.astro
+const { title, description, date, image } = Astro.props;
+const imagePath = `/assets/achievements/${image}`;
+---
+<div class="achievement-card">
+    {image && <img src={imagePath} alt={title} class="achievement-image" />}
+    <h2>{title}</h2>
+    <p>{description}</p>
+    <small>{date}</small>
+</div>
+
+<style>
+    .achievement-card {
+        border: 1px solid #ccc;
+        padding: 16px;
+        margin: 16px 0;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+    .achievement-card h2 {
+        margin: 0 0 8px;
+    }
+    .achievement-card p {
+        margin: 0 0 8px;
+    }
+    .achievement-card small {
+        color: #666;
+    }
+    .achievement-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 16px;
+    }
+</style>
