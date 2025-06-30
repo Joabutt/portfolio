@@ -12,6 +12,11 @@ export default function ProjectsPage() {
   const [scrollY, setScrollY] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
 
+  // Always scroll to top on mount (fixes scroll position issue)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Animate page entrance
   useEffect(() => {
     // Use a small delay to ensure CSS transitions are triggered after mount
@@ -21,9 +26,25 @@ export default function ProjectsPage() {
 
   useEffect(() => {
     const loadProjects = async () => {
+      // Try to get cached projects from sessionStorage
+      const cached = typeof window !== "undefined" ? sessionStorage.getItem("projects") : null;
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          setProjects(parsed);
+          setIsLoading(false);
+          return;
+        } catch (e) {
+          // If parsing fails, ignore and fetch fresh
+        }
+      }
       try {
         const data = await fetchProjects();
         setProjects(data.projects);
+        // Cache in sessionStorage
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("projects", JSON.stringify(data.projects));
+        }
       } catch (error) {
         console.error("Error loading projects:", error);
       } finally {

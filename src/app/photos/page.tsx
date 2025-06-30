@@ -15,6 +15,11 @@ export default function PhotosPage() {
   const [hasMore, setHasMore] = useState(true)
   const limit = 18
 
+  // Always scroll to top on mount (fixes scroll position issue)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Animate page entrance
   useEffect(() => {
     setTimeout(() => setIsLoaded(true), 100)
@@ -22,10 +27,29 @@ export default function PhotosPage() {
 
   useEffect(() => {
     const loadPhotos = async () => {
+      // Try to get cached photos from sessionStorage (only for first page)
+      if (page === 1) {
+        const cached = typeof window !== "undefined" ? sessionStorage.getItem("photos") : null;
+        if (cached) {
+          try {
+            const parsed = JSON.parse(cached);
+            setPhotos(parsed);
+            setIsLoading(false);
+            setHasMore(parsed.length >= limit); // crude check for more
+            return;
+          } catch (e) {
+            // If parsing fails, ignore and fetch fresh
+          }
+        }
+      }
       try {
         const data = await fetchPhotos(page, limit)
         if (page === 1) {
           setPhotos(data.photos || [])
+          // Cache in sessionStorage
+          if (typeof window !== "undefined") {
+            sessionStorage.setItem("photos", JSON.stringify(data.photos || []));
+          }
         } else {
           setPhotos((prev) => [...prev, ...(data.photos || [])])
         }

@@ -25,6 +25,11 @@ export default function AchievementsPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  // Always scroll to top on mount (fixes scroll position issue)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Animate page entrance
   useEffect(() => {
     // Use a small delay to ensure CSS transitions are triggered after mount
@@ -34,9 +39,25 @@ export default function AchievementsPage() {
 
   useEffect(() => {
     const loadAchievements = async () => {
+      // Try to get cached achievements from sessionStorage
+      const cached = typeof window !== "undefined" ? sessionStorage.getItem("achievements") : null;
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          setAchievements(parsed);
+          setIsLoading(false);
+          return;
+        } catch (e) {
+          // If parsing fails, ignore and fetch fresh
+        }
+      }
       try {
         const data = await fetchAchievements();
         setAchievements(data.achievements);
+        // Cache in sessionStorage
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("achievements", JSON.stringify(data.achievements));
+        }
       } catch (error) {
         console.error("Error loading achievements:", error);
       } finally {
