@@ -3,11 +3,43 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+
+import { fetchAchievements, fetchProjects, fetchPhotos } from "@/lib/data-fetcher";
+
 export default function HomePage() {
   const [isLoaded, setIsLoaded] = useState(false);
+  // Preload and cache achievements, projects, and photos on first visit
   useEffect(() => {
     // Use a small delay to ensure CSS transitions are triggered after mount
     const timer = setTimeout(() => setIsLoaded(true), 100);
+
+    // Preload and cache data if not already cached
+    (async () => {
+      if (typeof window !== "undefined") {
+        // Achievements
+        if (!sessionStorage.getItem("achievements")) {
+          try {
+            const data = await fetchAchievements();
+            sessionStorage.setItem("achievements", JSON.stringify(data.achievements));
+          } catch {}
+        }
+        // Projects
+        if (!sessionStorage.getItem("projects")) {
+          try {
+            const data = await fetchProjects();
+            sessionStorage.setItem("projects", JSON.stringify(data.projects));
+          } catch {}
+        }
+        // Photos (first page only)
+        if (!sessionStorage.getItem("photos")) {
+          try {
+            const data = await fetchPhotos(1, 18);
+            sessionStorage.setItem("photos", JSON.stringify(data.photos || []));
+          } catch {}
+        }
+      }
+    })();
+
     return () => clearTimeout(timer);
   }, []);
 

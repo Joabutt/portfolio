@@ -30,39 +30,37 @@ export default function AchievementsPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Animate page entrance
-  useEffect(() => {
-    // Use a small delay to ensure CSS transitions are triggered after mount
-    const timer = setTimeout(() => setIsLoaded(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
   useEffect(() => {
     const loadAchievements = async () => {
       // Try to get cached achievements from sessionStorage
       const cached = typeof window !== "undefined" ? sessionStorage.getItem("achievements") : null;
+      let loaded = false;
       if (cached) {
         try {
           const parsed = JSON.parse(cached);
           setAchievements(parsed);
           setIsLoading(false);
-          return;
+          loaded = true;
         } catch (e) {
           // If parsing fails, ignore and fetch fresh
         }
       }
-      try {
-        const data = await fetchAchievements();
-        setAchievements(data.achievements);
-        // Cache in sessionStorage
-        if (typeof window !== "undefined") {
-          sessionStorage.setItem("achievements", JSON.stringify(data.achievements));
+      if (!loaded) {
+        try {
+          const data = await fetchAchievements();
+          setAchievements(data.achievements);
+          // Cache in sessionStorage
+          if (typeof window !== "undefined") {
+            sessionStorage.setItem("achievements", JSON.stringify(data.achievements));
+          }
+        } catch (error) {
+          console.error("Error loading achievements:", error);
+        } finally {
+          setIsLoading(false);
         }
-      } catch (error) {
-        console.error("Error loading achievements:", error);
-      } finally {
-        setIsLoading(false);
       }
+      // Always trigger animation after data is set (even if cached)
+      setTimeout(() => setIsLoaded(true), 100);
     };
 
     loadAchievements();
