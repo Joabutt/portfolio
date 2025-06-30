@@ -1,0 +1,80 @@
+projects:
+  - title: Mousetrap Car
+    description: |
+      Through this performance task, I have learnt how to use the digital software Tracker which allows for us to digitally measure and record how fast the car is going in a certain period of time, and its distance travelled along the way.
+      The mousetrap car's frame was primarily comprised of chopsticks, while being held together with 3d printed mounting brackets. The spring was connected to a string and coiled up to the drive shaft, which powered the car.
+      This project has also taught me how to use a digital tracking software called Tracker, how to digitally model 3d objects alongside splicing and slicing objects to get them ready to print.
+    type: "Prototype Design"
+    skills: ["3d Printing", "Tracker", "Blender", "OnShape"]
+    image: "/images/projects/mousetrap.jpg"
+    year: "2024"
+
+  - title: SSTudy
+    description: |
+      This project is a smart classroom assistant designed to help students stay focused during lessons. 
+      With a simple button press, it records the lesson, transcribes the audio, and uses AI to generate clear notes and highlight any homework assigned. 
+      This reduces the need for manual note-taking and allows students to pay full attention in class.
+      Through this project, I learnt how to integrate speech-to-text technology, apply AI for summarising content, and design solutions that support students who may need extra help keeping up in class.
+    type: "Protytype Design" # or "Research", "Creative", etc.
+    skills: ["RaspberryPi", "Nodejs", "HTML", "CSS", "JavaScript", "OpenAI"]
+    link: "https://sites.google.com/sst.edu.sg/cp-coursework-gallery/2025/sstudy"
+    image: "/images/projects/sstudy.jpg"
+    year: "2025"
+  
+  - title: Prototype Electronic Muscle Stimulator
+    description: |
+      This is a school project where I designed and built a prototype electronic muscle stimulator (EMS) device, on a breadboard.
+      The EMS device is designed to help with muscle recovery and rehabilitation by sending electrical impulses to stimulate muscle contractions.
+      The project involved researching the principles of EMS, designing the circuit, and working with different components like resistors and capacitors.
+      After the design was completed, I wrote a report detailing the design process, the components used, and the expected outcomes of the EMS device.
+      This project has taught me valuable skills in electronics, circuit design, and prototype development.
+    type: "Prototype Design" # or "Research", "Creative", etc.
+    skills: ["Breadboard", "Electronics", "Circuit Design"]
+    link: "https://drive.google.com/file/d/1q5gYEy842lPzxQxo3wYBG7Sr71R0rtfu/view?usp=sharing"
+    image: "/images/projects/ems.jpg"
+    year: "2025"
+    
+  - title: "Doqs"
+    description: |
+      An intelligent note taking app that supports collaboration and AI-powered features.
+      It allows users to create, share, and manage notes efficiently.
+      The app integrates with various AI tools to enhance productivity and learning.
+    type: "Web Development" # or "Research", "Creative", etc.
+    skills: ["React", "Tiptap", "Nodejs"]
+    link: "https://github.com/joabutt/doqs" # Optional
+    image: "/images/projects/doqs.jpg"
+    year: "2022"
+
+  - title: "Goosehonk"
+    description: |
+      An API for Desktop Goose for Mac that adds humour and fun.
+      It allows the goose to get memes from reddit and tell yo mamma jokes.
+      The app integrates with Javascript and interacts with Applescript to ensure that the goose behaves well.
+    type: "Creative" # or "Research", "Creative", etc.
+    skills: ["Applescript", "Nodejs", "Javascript"]
+    image: "/images/projects/goosehonk.jpg"
+    year: "2022"
+
+  - title: Aideas
+    description: |
+      A platform that allows users to share and discover AI-generated startup ideas.
+      It allows for for users to brainstorm and think of new ideas more effeciently, alongside being backed by AI.
+      The app integrates with Pug for its frontend, alongside a Replit database for its backend.
+    type: "Web Development" # or "Research", "Creative", etc.
+    skills: ["OpenAI", "Pug", "HTML", "CSS", "JavaScript"]
+    link: "https://github.com/joabutt/aideas"
+    image: "/images/projects/aideas.jpg"
+    year: "2022"
+
+  - title: Is really cool
+    description: |
+      Is-really.cool is a free domain sharing service for people to share their works and portfolios to the world, on a really cool domain! 
+      This domain sharing service's registration is on github, where users will create a new file with their desired domain name, their site url they want the domain to point to, and their email for contact purposes. 
+      Once the pull request for the domain is merged, a github action that will use curl to call a self-written api will take place, then the api will then proceed to get the information from the merged pull requests's new data, and use the Cloudflare api to add the new subdomain to the site.
+    type: "Backend Development"
+    skills: ["Cloudflare", "nodejs", "Github workflows", "curl"]
+    link: "https://github.com/is-amazing/register"
+    image: "/images/projects/irc.jpg"
+    year: "2023"
+
+

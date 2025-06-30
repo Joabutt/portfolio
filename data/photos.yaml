@@ -1,0 +1,103 @@
+photos:
+  - id: 1
+    title: "Life in Shanghai"
+    location: Pudong, Shanghai
+    image: "/images/photos/street/street_1.jpg"
+    category: "Street"
+    year: "2025"
+  - id: 2
+    title: Evening glow
+    location: West Lake, Hangzhou
+    image: "/images/photos/nature/nature_1.jpg"
+    category: "Nature"
+    year: "2025"
+  - id: 3
+    title: Lake reflections
+    location: West Lake, Hangzhou
+    image: "/images/photos/nature/nature_2.jpg"
+    category: "Nature"
+    year: "2025"
+  - id: 4
+    title: Isolation in Nature
+    location: Lujiazui, Shanghai
+    image: "/images/photos/nature/nature_3.jpg"
+    category: "Nature"
+    year: "2025"
+  - id: 5
+    title: Night in the City
+    location: "Bund, Shanghai"
+    image: "/images/photos/scenery/scenery_1.jpg"
+    category: "Scenery"
+    year: "2025"
+  - id: 6
+    title: City Lights
+    location: Bund, Shanghai
+    image: "/images/photos/scenery/scenery_2.jpg"
+    category: "Scenery"
+    year: "2025"
+  - id: 7
+    title: "Golden Pier"
+    location: West Lake, Hangzhou
+    image: "/images/photos/nature/nature_4.jpg"
+    category: "Nature"
+    year: "2025"
+  - id: 8
+    title: "West Bridge"
+    location: West Lake, Hangzhou
+    image: "/images/photos/scenery/scenery_3.jpg"
+    category: "Scenery"
+    year: "2025"
+  - id: 9
+    title: "Shopping Street"
+    location: Tianzifang, Shanghai
+    image: "/images/photos/street/street_2.jpg"
+    category: "Street"
+    year: "2025"
+  - id: 10
+    title: "Floating City"
+    location: Zhujiajiao, Shanghai
+    image: "/images/photos/street/street_3.jpg"
+    category: "Street"
+    year: "2025"
+  - id: 11
+    title: "Crossroad"
+    location: Xiwen, Hangzhou
+    image: "/images/photos/street/street_5.jpg"
+    category: "Street"
+    year: "2025"
+  - id: 12
+    title: "Blurred Sky"
+    location: Sentosa, Singapore
+    image: "/images/photos/scenery/scenery_4.jpg"
+    category: "Scenery"
+    year: "2024"
+  - id: 13
+    title: "House by the lake"
+    location: Lijiang, Yunnan
+    image: "/images/photos/nature/nature_5.jpg"
+    category: "Nature"
+    year: "2024"
+  - id: 14
+    title: "Golden woods"
+    location: Lijiang, Yunnan
+    image: "/images/photos/nature/nature_6.jpg"
+    category: "Nature"
+    year: "2024"
+  - id: 15
+    title: "Yellow sky"
+    location: Dali, Yunnan
+    image: "/images/photos/scenery/scenery_5.jpg"
+    category: "Scenery"
+    year: "2024"
+  - id: 16
+    title: "Mount by the lake"
+    location: Yulong, Yunnan
+    image: "/images/photos/scenery/scenery_6.jpg"
+    category: "Scenery"
+    year: "2024"
+  - id: 17
+    title: Flowing mountains
+    location: Yulong, Yunnan
+    image: "/images/photos/scenery/scenery_7.jpg"
+    category: "Scenery"
+    year: "2024"
