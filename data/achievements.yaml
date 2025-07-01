@@ -35,7 +35,7 @@ achievements:
     year: "2023"
     category: "Leadership"
   - title: "House Captain"
-    description: "House Captain"
+    description: "Red House Captain for the School"
     year: "2024-2025"
     category: "Leadership"
   - title: "SnW Representative"
@@ -65,6 +65,7 @@ achievements:
   - title: "Bernina Work Experience Programme"
     description: "Industrial experience at Bernina Singapore"
     year: "2024"
+    link: "https://bernina.com.sg/pages/education"
     category: "Work Experience"
 
   # Academic Programmes
