@@ -50,7 +50,7 @@ export default function HomePage() {
           isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black mb-6 sm:mb-8 leading-none">
+        <h1 className="text-[2.5rem] xs:text-7xl sm:text-8xl md:text-9xl lg:text-[9rem] font-black mb-6 sm:mb-8 leading-tight break-words" style={{ wordBreak: 'break-word', fontSize: 'clamp(3.5rem, 14vw, 9rem)' }}>
           Joab
           <br />
           Lee
