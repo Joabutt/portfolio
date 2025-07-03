@@ -62,7 +62,7 @@ projects:
       The app integrates with Pug for its frontend, alongside a Replit database for its backend.
     type: "Web Development" # or "Research", "Creative", etc.
     skills: ["OpenAI", "Pug", "HTML", "CSS", "JavaScript"]
-    link: "https://github.com/joabutt/aideas"
+    link: "https://github.com/joabutt/aideas-frontend"
     image: "/images/projects/aideas.jpg"
     year: "2022"
 
