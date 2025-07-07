@@ -101,3 +101,9 @@ photos:
     image: "/images/photos/scenery/scenery_7.jpg"
     category: "Scenery"
     year: "2024"
+  - id: 18
+    title: "Christmas lights"
+    location: Orchard Road, Singapore
+    image: "/images/photos/street/street_6.jpg"
+    category: "Street"
+    year: "2024"
