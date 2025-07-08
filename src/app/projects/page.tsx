@@ -107,7 +107,7 @@ export default function ProjectsPage() {
             <div
               key={index}
               onClick={() => setExpandedProject(project)}
-              className={`border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all duration-500 ease-out transform cursor-pointer
+              className={`border-4 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all duration-500 ease-out transform cursor-expand
                 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
               `}
               style={{ transitionDelay: `${index * 100 + 200}ms` }}

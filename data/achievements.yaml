@@ -9,15 +9,18 @@ achievements:
     year: "2023"
     link: "https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-23-1550.html#general-info"
     category: "Robotics"
+    image: "/images/achievements/wsa.jpeg"
   - title: "Singapore VRC Championship"
     description: "Robot Skills 3rd Place 🥉"
     year: "2023"
     category: "Robotics"
+    image: "/images/achievements/svrc.jpeg"
   - title: "Singapore VEX Tournament"
     description: "Think Award 🏆"
     link: "https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-V5RC-24-6036.html#awards"
     year: "2024"
     category: "Robotics"
+    image: "/images/achievements/svt.jpeg"
   - title: "Singapore South VRC Skill Challenge"
     description: "Participation Award"
     link: "https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-VRC-23-4818.html#general-info"
@@ -28,15 +31,18 @@ achievements:
     link: "https://www.robotevents.com/robot-competitions/vex-robotics-competition/RE-V5RC-24-6031.html#awards"
     year: "2025"
     category: "Robotics"
+    image: "/images/achievements/svnc.jpeg"  
 
   # Leadership Roles
   - title: "Student Leader Investiture"
     description: "Appointed as a student leader"
     year: "2023"
     category: "Leadership"
+    image: "/images/achievements/jhl.jpeg"
   - title: "House Captain"
     description: "Red House Captain for the School"
     year: "2024-2025"
+    image: "/images/achievements/hl.jpeg"
     category: "Leadership"
   - title: "SnW Representative"
     description: "Sports and Wellness Rep"
@@ -56,10 +62,12 @@ achievements:
     description: "Astronomy-based overseas learning experience"
     year: "2024"
     category: "Trips"
+
   - title: "Shanghai Overseas Immersion Trip"
     description: "Cultural and academic immersion trip"
     year: "2025"
     category: "Trips"
+    image: "/images/achievements/shanghai.jpeg"
 
   # Work Experience
   - title: "Bernina Work Experience Programme"
@@ -67,6 +75,7 @@ achievements:
     year: "2024"
     link: "https://bernina.com.sg/pages/education"
     category: "Work Experience"
+    image: "/images/achievements/bernina.jpeg"
 
   # Academic Programmes
   - title: "PrepMUN"
@@ -74,10 +83,13 @@ achievements:
     year: "2024"
     link: "https://www.prepmun.sg/"
     category: "Academic"
+    image: "/images/achievements/prep.jpeg"
+
   - title: "JPMUN"
     description: "Honourable Mention at Model United Nations conference"
     year: "2024"
     category: "Academic"
+    image: "/images/achievements/jp.jpeg"
 
   # Community Service
   - title: "Volunteer at Hao Ren Hao Shi"
