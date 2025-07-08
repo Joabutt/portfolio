@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import Image from "next/image";
+import { useState, useEffect, useMemo } from "react";
 import { fetchAchievements, type Achievement } from "@/lib/data-fetcher";
 import { ExternalLink } from "lucide-react";
 
-// Define the order and display names for categories
 const CATEGORY_ORDER = [
   "Leadership",
   "Trips",
@@ -27,77 +27,76 @@ export default function AchievementsPage() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hoveredAchievement, setHoveredAchievement] =
     useState<AchievementWithLink | null>(null);
-  const [cursorPosition, setCursorPosition] = useState<{
-    x: number;
-    y: number;
-  }>({ x: 0, y: 0 });
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
-  // Always scroll to top on mount (fixes scroll position issue)
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
     const loadAchievements = async () => {
-      const cached =
-        typeof window !== "undefined"
-          ? sessionStorage.getItem("achievements")
-          : null;
-      let loaded = false;
-      if (cached) {
-        try {
+      try {
+        const cached =
+          typeof window !== "undefined"
+            ? sessionStorage.getItem("achievements")
+            : null;
+        if (cached) {
           const parsed = JSON.parse(cached);
           setAchievements(parsed);
-          setIsLoading(false);
-          loaded = true;
-        } catch (e) {}
-      }
-      if (!loaded) {
-        try {
+        } else {
           const data = await fetchAchievements();
           setAchievements(data.achievements);
-          if (typeof window !== "undefined") {
-            sessionStorage.setItem(
-              "achievements",
-              JSON.stringify(data.achievements)
-            );
-          }
-        } catch (error) {
-          console.error("Error loading achievements:", error);
-        } finally {
-          setIsLoading(false);
+          sessionStorage.setItem(
+            "achievements",
+            JSON.stringify(data.achievements)
+          );
         }
+      } catch (error) {
+        console.error("Error loading achievements:", error);
+      } finally {
+        setIsLoading(false);
+        setTimeout(() => setIsLoaded(true), 100);
       }
-      setTimeout(() => setIsLoaded(true), 100);
     };
 
     loadAchievements();
   }, []);
 
-  const grouped = achievements.reduce<Record<string, AchievementWithLink[]>>(
-    (acc, achievement) => {
-      const category = achievement.category || "Other";
-      if (!acc[category]) acc[category] = [];
-      acc[category].push(achievement);
-      return acc;
-    },
-    {}
-  );
+  useEffect(() => {
+    achievements.forEach((a) => {
+      if (a.image) {
+        const img = new window.Image();
+        img.src = a.image;
+      }
+    });
+  }, [achievements]);
 
-  const sortedCategories = [
-    ...CATEGORY_ORDER.filter((cat) => grouped[cat]),
-    ...Object.keys(grouped)
-      .filter((cat) => !CATEGORY_ORDER.includes(cat))
-      .sort(),
-  ];
+  const grouped = useMemo(() => {
+    return achievements.reduce<Record<string, AchievementWithLink[]>>(
+      (acc, achievement) => {
+        const category = achievement.category || "Other";
+        if (!acc[category]) acc[category] = [];
+        acc[category].push(achievement);
+        return acc;
+      },
+      {}
+    );
+  }, [achievements]);
+
+  const sortedCategories = useMemo(() => {
+    return [
+      ...CATEGORY_ORDER.filter((cat) => grouped[cat]),
+      ...Object.keys(grouped)
+        .filter((cat) => !CATEGORY_ORDER.includes(cat))
+        .sort(),
+    ];
+  }, [grouped]);
 
   const handleMouseEnter = (achievement: AchievementWithLink) => {
     if (achievement.image) setHoveredAchievement(achievement);
   };
 
-  const handleMouseLeave = () => {
-    setHoveredAchievement(null);
-  };
+  const handleMouseLeave = () => setHoveredAchievement(null);
 
   const handleMouseMove = (e: React.MouseEvent) => {
     setCursorPosition({ x: e.clientX + 20, y: e.clientY + 20 });
@@ -188,7 +187,6 @@ export default function AchievementsPage() {
         ))}
       </div>
 
-      {/* Modal Preview */}
       {hoveredAchievement?.image && (
         <div
           className="fixed z-50 pointer-events-none transition-opacity duration-300"
@@ -197,10 +195,13 @@ export default function AchievementsPage() {
             left: cursorPosition.x,
           }}
         >
-          <img
+          <Image
             src={hoveredAchievement.image}
             alt="Achievement preview"
+            width={400}
+            height={400}
             className="max-w-[400px] max-h-[400px] object-contain rounded-lg shadow-lg border-2 border-black"
+            priority
           />
         </div>
       )}
